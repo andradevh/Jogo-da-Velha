@@ -15,24 +15,16 @@ public class App {
                 System.out.println("Vitória do Player X!");
                 imprimirMatriz(arena);
                 break;
-            } else if (checarVitoriaO(arena)) {
-                System.out.println("---Turno O---");
-                imprimirMatriz(arena);
-                break;
             } else if (checarEmpate(arena)) {
                 System.out.println("Deu velha!");
                 imprimirMatriz(arena);
                 break;
             }
-            System.out.println("Turno do O");
+
+            System.out.println("---Turno O---");
             imprimirMatriz(arena);
             popularMatrizO(arena);
-
-            if (checarVitoriaX(arena)) {
-                System.out.println("Vitória do Player X!");
-                imprimirMatriz(arena);
-                break;
-            } else if (checarVitoriaO(arena)) {
+            if (checarVitoriaO(arena)) {
                 System.out.println("Vitória do Player O!");
                 imprimirMatriz(arena);
                 break;
@@ -52,8 +44,10 @@ public class App {
             x = sc.nextInt();
             y = sc.nextInt();
 
-            if (arena[x][y] != 0) {
-                System.out.println("Essa casa já foi escolhida!");
+            if (x > 2 || y > 2) {
+                System.out.println("Insira um valor de 0 a 2");
+            } else if (arena[x][y] != 0) {
+                System.out.println("Essa casa já foi escolhida!\n");
             } else {
                 arena[x][y] = 'X';
                 break;
@@ -70,7 +64,9 @@ public class App {
             x = sc.nextInt();
             y = sc.nextInt();
 
-            if (arena[x][y] != 0) {
+            if (x > 2 || y > 2) {
+                System.out.println("Insira um valor de 0 a 2");
+            } else if (arena[x][y] != 0) {
                 System.out.println("Essa casa já foi escolhida!\n");
             } else {
                 arena[x][y] = 'O';
@@ -82,9 +78,17 @@ public class App {
     public static void imprimirMatriz(char[][] arena) {
         for (int i = 0; i < arena.length; i++) {
             System.out.print("| ");
+
             for (int j = 0; j < arena[i].length; j++) {
                 char elemento = arena[i][j];
-                String display = (elemento == 0) ? " " : String.valueOf(elemento);
+                String display;
+
+                if (elemento == 0) {
+                    display = " "; 
+                } else {
+                    display = String.valueOf(elemento);
+                }
+
                 System.out.print(display + " | ");
             }
 
