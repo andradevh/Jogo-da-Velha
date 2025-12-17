@@ -48,7 +48,7 @@ public class App {
         int x, y;
 
         while (true) {
-            System.out.println("Insira a coordenada que deseja jogar");
+            System.out.println("Insira a coordenada que deseja jogar (linha x coluna)");
             x = sc.nextInt();
             y = sc.nextInt();
 
@@ -66,7 +66,7 @@ public class App {
         int x, y;
 
         while (true) {
-            System.out.println("Insira a coordenada que deseja jogar");
+            System.out.println("Insira a coordenada que deseja jogar (linha x coluna)");
             x = sc.nextInt();
             y = sc.nextInt();
 
@@ -138,6 +138,21 @@ public class App {
             }
 
         }
+        boolean diagPrincipal = true;
+        boolean diagSecundaria = true;
+
+        for (int i = 0; i < arena.length; i++) {
+            if (arena[i][i] != 'X') {
+                diagPrincipal = false;
+            }
+            if (arena[i][arena.length - 1 - i] != 'X') {
+                diagSecundaria = false;
+            }
+        }
+
+        if (diagPrincipal || diagSecundaria) {
+            return true;
+        }
         return false;
     }
 
@@ -171,6 +186,21 @@ public class App {
 
             }
 
+        }
+        boolean diagPrincipal = true;
+        boolean diagSecundaria = true;
+
+        for (int i = 0; i < arena.length; i++) {
+            if (arena[i][i] != 'O') {
+                diagPrincipal = false;
+            }
+            if (arena[i][arena.length - 1 - i] != 'O') {
+                diagSecundaria = false;
+            }
+        }
+
+        if (diagPrincipal || diagSecundaria) {
+            return true;
         }
         return false;
     }
